@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift 3 - Our Future Plans</title>
+    <link rel="stylesheet" href="./gift_style.css">
+</head>
+<body class="gift3-bg">
+    <div class="kiss-container" id="kissContainer"></div>
+    <div class="gift-page">
+        <h1>Gift 3: Dreams With You 🌙</h1>
+        <p class="gift-text">
+            When I think about the future, I don’t just see places or plans… I see <em>us</em>.<br><br>
+            I dream about traveling somewhere beautiful with you ❤️ maybe a quiet beach where we walk barefoot at sunset,
+            or a cozy little cabin in the mountains where it’s just you, me, and the sound of the world slowing down.
+            I want to hold your hand in new cities, try new foods together, get lost and laugh about it.<br><br>
+            But more than the big adventures, I dream about the small things.<br>
+            Sunday mornings where you’re still sleepy and I get to pull you closer. Late-night talks about everything and nothing.
+            Building a home that feels warm because you’re in it.<br><br>
+            And here’s my most special dream…<br><br>
+            One day, I want to look at you ❤️ maybe while we’re cooking dinner or sitting on the couch after a long day —
+            and feel that same spark I feel now. I want us to smile at each other like we share a secret the world doesn’t know.
+            I want to grow older with you, still teasing each other, still choosing each other, still falling in love in new ways.<br><br>
+            I don’t just dream about a future.<br>
+            I dream about a lifetime… with you BABAAAAAAAAAAAAAAAAA. 💫
+        </p>
+        <button class="back-button" onclick="window.location.href='gifts.html'">
+            Back to gifts
+        </button>
+    </div>
+    <script>
+        const kissContainer = document.getElementById('kissContainer');
+        const kissEmojis = ['💋', '😘', '😚', '😍'];
+
+        function spawnKiss() {
+            const span = document.createElement('span');
+            span.className = 'kiss';
+            span.textContent = kissEmojis[Math.floor(Math.random() * kissEmojis.length)];
+            span.style.left = Math.random() * 100 + '%';
+            span.style.top = Math.random() * 100 + '%';
+            span.style.animationDuration = (6 + Math.random() * 4) + 's';
+            kissContainer.appendChild(span);
+
+            setTimeout(() => {
+                span.remove();
+            }, 10000);
+        }
+
+        // spawn kisses slowly all around (a bit more frequent)
+        setInterval(spawnKiss, 400);
+    </script>
+</body>
+</html>
+

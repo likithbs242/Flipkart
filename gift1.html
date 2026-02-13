@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift 1 - A Little Note</title>
+    <link rel="stylesheet" href="./gift_style.css">
+</head>
+<body class="gift1-bg">
+    <div class="balloon-container" id="balloonContainer"></div>
+    <div class="gift-page">
+        <h1>Gift 1: A Little Love Note 💌</h1>
+        <p class="gift-text">
+            My Love,<br><br>
+            Today is Valentine’s Day, but loving you isn’t something I celebrate just once a year❤️ it’s something I feel every single day.<br><br>
+            You make my world softer, brighter, and so much more beautiful just by being in it. Your smile is my favorite sight, your laugh is my favorite sound, and your heart… your heart is my favorite place to be.<br><br>
+            Thank you for being you ❤️ for your kindness, your warmth, your little quirks, and the way you love so genuinely. I feel incredibly lucky to call you mine.<br><br>
+            No matter where life takes us, I promise to always cherish you, support you, and remind you just how special you are.<br><br>
+            Happy Valentine’s Day, my beautiful. 💕<br>
+            You are loved more than you know.<br><br>
+            Forever yours ❤️
+        </p>
+        <button class="back-button" onclick="window.location.href='gifts.html'">
+            Back to gifts
+        </button>
+    </div>
+    <script>
+        const balloonContainer = document.getElementById('balloonContainer');
+        const balloonEmojis = ['🎈', '❤️', '💖', '💕'];
+
+        function spawnBalloon() {
+            const span = document.createElement('span');
+            span.className = 'balloon';
+            span.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
+            span.style.left = Math.random() * 100 + '%';
+            span.style.animationDuration = (5 + Math.random() * 4) + 's';
+            balloonContainer.appendChild(span);
+
+            setTimeout(() => {
+                span.remove();
+            }, 10000);
+        }
+
+        // spawn balloons continuously all over the screen
+        setInterval(spawnBalloon, 450);
+    </script>
+</body>
+</html>
+

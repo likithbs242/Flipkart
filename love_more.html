@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Are So Sweet</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #ffe7fb, #ffc6f0, #ff9fe2);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .more-wrapper {
+            position: relative;
+            max-width: 1000px;
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+        }
+        .main-text {
+            font-size: 2rem;
+            color: #d2185b;
+            margin-bottom: 12px;
+        }
+        .more-container {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            justify-content: center;
+            gap: 6px;
+            overflow: hidden;
+        }
+        .more-word {
+            color: #ff4b7d;
+            font-weight: bold;
+            font-size: 1.1rem;
+            opacity: 0;
+            animation: fadeInMore 0.6s forwards;
+        }
+        @keyframes fadeInMore {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .big-heart {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: #ff2f6f;
+            text-shadow: 0 0 40px rgba(255, 47, 111, 0.7);
+            opacity: 0;
+            animation: popHeart 3s forwards;
+        }
+        @keyframes popHeart {
+            0% { opacity: 0; transform: scale(0.5); }
+            20% { opacity: 1; transform: scale(1.1); }
+            60% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.9); }
+        }
+    </style>
+</head>
+<body>
+    <div class="more-wrapper">
+        <div class="main-text">
+            You are so sewwt! Love you more and more and more and more
+        </div>
+        <div id="moreContainer" class="more-container"></div>
+    </div>
+
+    <script>
+        // Continuously add "More" words to fill the page
+        const container = document.getElementById('moreContainer');
+        let count = 0;
+        const maxMore = 400; // plenty to visually fill the page
+
+        const addMoreInterval = setInterval(() => {
+            if (count >= maxMore) {
+                clearInterval(addMoreInterval);
+                return;
+            }
+            const span = document.createElement('span');
+            span.className = 'more-word';
+            span.textContent = 'More';
+            container.appendChild(span);
+            count++;
+        }, 40);
+
+        // After 5 seconds, show a big heart
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.className = 'big-heart';
+            heart.textContent = '❤';
+            document.body.appendChild(heart);
+        }, 5000);
+
+        // After 8 seconds total (5s + 3s), go back to gifts section
+        setTimeout(() => {
+            window.location.href = 'gifts.html';
+        }, 8000);
+    </script>
+</body>
+</html>
+

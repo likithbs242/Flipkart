@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift 2 - Reasons I Love You</title>
+    <link rel="stylesheet" href="./gift_style.css">
+</head>
+<body class="gift2-bg">
+    <div class="gift-page">
+        <h1>Gift 2: Reasons I Love You ❤️</h1>
+        <ul class="reasons-list">
+            <li class="reason-option">Your smile makes everything better.</li>
+            <li class="reason-option">You always know how to make me laugh.</li>
+            <li class="reason-option">You are my safe place.</li>
+            <!-- Add or change reasons as you like -->
+        </ul>
+        <p id="loveResponse" class="love-response"></p>
+        <button class="back-button" onclick="window.location.href='gifts.html'">
+            Back to gifts
+        </button>
+    </div>
+    <script>
+        // Add continuous flying heart animation when a reason is selected
+        function startUnlimitedHearts(durationMs) {
+            const container = document.createElement('div');
+            container.className = 'hearts-container';
+            document.body.appendChild(container);
+
+            const interval = setInterval(() => {
+                const heart = document.createElement('span');
+                heart.className = 'heart';
+                heart.textContent = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = (Math.random() * 0.8) + 's';
+                heart.style.fontSize = (18 + Math.random() * 16) + 'px';
+                container.appendChild(heart);
+            }, 30);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                setTimeout(() => container.remove(), 3500);
+            }, durationMs);
+        }
+
+        const sweetMessage = "You picked one of the many reasons my heart is completely yours. Thank you for being the best part of my life. 💖";
+
+        document.querySelectorAll('.reason-option').forEach((item) => {
+            item.addEventListener('click', () => {
+                // Visual feedback for selected option
+                document.querySelectorAll('.reason-option').forEach(el => el.classList.remove('selected'));
+                item.classList.add('selected');
+                // Trigger unlimited hearts for a short burst
+                startUnlimitedHearts(2000);
+                // Show sweet response text
+                const responseEl = document.getElementById('loveResponse');
+                if (responseEl) {
+                    responseEl.textContent = sweetMessage;
+                }
+                // After 2 seconds, go to next love question
+                setTimeout(() => {
+                    window.location.href = 'love_question.html';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
+

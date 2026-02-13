@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    background: radial-gradient(circle at top right, #ffe3f4, #ffbfd6, #ff94c2);
+}
+
+.gifts-container {
+    max-width: 1000px;
+    width: 100%;
+    padding: 32px 20px 40px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.93);
+    border-radius: 24px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    text-align: center;
+}
+
+.gifts-title {
+    font-size: 2.1rem;
+    margin-bottom: 8px;
+    color: #d2185b;
+}
+
+.gifts-subtitle {
+    font-size: 1rem;
+    margin-bottom: 26px;
+    color: #7d3550;
+}
+
+.gifts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+    margin-bottom: 26px;
+}
+
+.gifts-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.gift-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    background: #fff0f7;
+    border-radius: 20px;
+    padding: 14px 14px 18px;
+    box-shadow: 0 10px 22px rgba(207, 40, 104, 0.18);
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.gift-box img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.gift-label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #d2185b;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.gift-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.5), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.22s ease;
+}
+
+.gift-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(207, 40, 104, 0.26);
+}
+
+.gift-box:hover::before {
+    opacity: 1;
+}
+
+.back-button {
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #ff4b7d, #ff6fb5);
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+    opacity: 0.96;
+}
+
+.final-button {
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #ff8a5c, #ff3b7f);
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.final-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+    opacity: 0.96;
+}
+

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at top, #ffe4f5, #ffbedf, #ff92c2);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .final-wrapper {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            padding: 28px 20px 32px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 26px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+            text-align: center;
+            z-index: 5;
+        }
+        .final-title {
+            font-size: 2.3rem;
+            letter-spacing: 1px;
+            color: #d2185b;
+            margin-bottom: 10px;
+        }
+        .final-title span.rose {
+            margin-left: 8px;
+        }
+        .photo-frame {
+            margin: 18px auto 16px;
+            width: min(90%, 460px);
+            border-radius: 18px;
+            border: 3px dashed #ff9ac5;
+            background: rgba(255, 240, 248, 0.9);
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .photo-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 14px;
+        }
+        .baba-text {
+            font-size: 1.4rem;
+            margin-top: 6px;
+            color: #e02463;
+            font-weight: bold;
+        }
+        .baba-text span {
+            text-shadow: 0 0 16px rgba(255, 0, 102, 0.45);
+        }
+        .heart-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 2;
+        }
+        .flying-heart {
+            position: absolute;
+            top: 0;
+            bottom: auto;
+            font-size: 26px;
+            color: #ff2f6f;
+            animation: floatFinalHeart 3s linear forwards;
+        }
+        @keyframes floatFinalHeart {
+            0% {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translate3d(-25px, -60vh, 0) scale(1.1);
+            }
+            100% {
+                transform: translate3d(25px, -130vh, 0) scale(1.1);
+                opacity: 0;
+            }
+        }
+        .full-heart-cover {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 182, 209, 0.85);
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+        .full-heart-cover span {
+            font-size: 2rem;
+            color: #ff0055;
+        }
+        .full-heart-cover.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-overlay" id="heartOverlay"></div>
+
+    <div class="final-wrapper">
+        <h1 class="final-title">
+            WILL YOU BE MINE VALENTINE <span class="rose">🌹</span>
+        </h1>
+
+        <div class="photo-frame">
+            <img src="./images/liki.png" alt="My beautiful Valentine">
+        </div>
+
+        <div class="baba-text">
+            <span>I LOVE YOU BABE</span>
+        </div>
+    </div>
+
+    <div class="full-heart-cover" id="fullHeartCover"></div>
+
+    <script>
+        const overlay = document.getElementById('heartOverlay');
+        const cover = document.getElementById('fullHeartCover');
+
+        function spawnFlyingHeart() {
+            const span = document.createElement('span');
+            span.className = 'flying-heart';
+            span.textContent = '❤';
+            span.style.left = Math.random() * 100 + '%';
+            span.style.top = Math.random() * 100 + '%';
+            span.style.fontSize = (22 + Math.random() * 14) + 'px';
+            span.style.animationDuration = (2.3 + Math.random() * 1.2) + 's';
+            overlay.appendChild(span);
+
+            setTimeout(() => span.remove(), 7000);
+        }
+
+        // Continuous hearts floating upwards
+        const heartInterval = setInterval(spawnFlyingHeart, 40);
+
+        // After a few seconds, fade in a full-screen heart cover
+        setTimeout(() => {
+            // Stop spawning new hearts
+            clearInterval(heartInterval);
+
+            // Fill the cover with hearts
+            for (let i = 0; i < 200; i++) {
+                const h = document.createElement('span');
+                h.textContent = '❤';
+                cover.appendChild(h);
+            }
+            cover.classList.add('show');
+        }, 4000);
+
+        // After hearts fill the screen, try to close the page,
+        // and if that fails, go back to the gifts section
+        setTimeout(() => {
+            window.close();
+            setTimeout(() => {
+                window.location.href = 'gifts.html';
+            }, 2000);
+        }, 7000);
+    </script>
+</body>
+</html>
+

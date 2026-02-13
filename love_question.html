@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Love Question</title>
+    <link rel="stylesheet" href="./gift_style.css">
+    <style>
+        body.love-question-bg {
+            background: radial-gradient(circle at top, #ffe9fb, #ffc8f0, #ff9fe0);
+        }
+        .love-question-page {
+            max-width: 800px;
+            width: 90%;
+            padding: 30px 22px 34px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        .love-question-text {
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            color: #d2185b;
+        }
+        .love-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .love-option-btn {
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(135deg, #ff4b7d, #ff6fb5);
+            color: #ffffff;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+        }
+        .love-option-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+            opacity: 0.96;
+        }
+        .love-question-note {
+            font-size: 0.9rem;
+            color: #7b3550;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body class="love-question-bg">
+    <div class="love-question-page">
+        <h1>Next Love Question 💞</h1>
+        <p class="love-question-text">
+            How many butterflies are in your tummy when you think of us?
+        </p>
+        <div class="love-options">
+            <button class="love-option-btn">So many I can’t even count</button>
+            <button class="love-option-btn">Enough to make me blush</button>
+            <button class="love-option-btn">All of them, always</button>
+        </div>
+        <p class="love-question-note">Tap any answer… something extra cute is waiting. 🧸</p>
+    </div>
+
+    <script>
+        function startPetals(durationMs) {
+            const container = document.createElement('div');
+            container.className = 'petal-container';
+            document.body.appendChild(container);
+
+            const petalChars = ['🌸', '💮', '🌺', '🌷'];
+
+            const interval = setInterval(() => {
+                const petal = document.createElement('span');
+                petal.className = 'petal';
+                petal.textContent = petalChars[Math.floor(Math.random() * petalChars.length)];
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDelay = (Math.random() * 0.5) + 's';
+                container.appendChild(petal);
+            }, 40);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                setTimeout(() => container.remove(), 4000);
+            }, durationMs);
+        }
+
+        document.querySelectorAll('.love-option-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                startPetals(4000);
+                setTimeout(() => {
+                    window.location.href = 'gifts.html';
+                }, 4000);
+            });
+        });
+    </script>
+</body>
+</html>
+
